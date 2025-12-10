@@ -9,9 +9,9 @@ nmap -A 10.10.48.167
 - i found that port 80 is open 
 - i opend link in the browser and added its domin to /etc/hosts 
 
-> i found that website has no registartion and forgot password need an sepecifed email that on server so we need to find any hidden page that can help us such as giving to me a data 
+> i found that website has no registartion and forgot password need an sepecifed email that on server so we need to find any hidden page that can help us such as giving to me a data now i need to know all hiden pages we can use gobuster
 
-- now i need to know all hiden pages we can use gobuster
+# find hidden pages
 
 ```
 gobuster dir -u  http://monitorsfour.htb -w /usr/share/dirb/wordlists/common.txt
@@ -19,7 +19,6 @@ gobuster dir -u  http://monitorsfour.htb -w /usr/share/dirb/wordlists/common.txt
 
 and it result it
 
-# find hidden pages
 ```
 ===============================================================
 Gobuster v3.8
