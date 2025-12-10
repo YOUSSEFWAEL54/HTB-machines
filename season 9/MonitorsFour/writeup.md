@@ -20,6 +20,7 @@ gobuster dir -u  http://monitorsfour.htb -w /usr/share/dirb/wordlists/common.txt
 and it result it
 
 # find hidden pages
+```
 ===============================================================
 Gobuster v3.8
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
@@ -48,6 +49,7 @@ Progress: 4613 / 4613 (100.00%)
 ===============================================================
 Finished
 ===============================================================
+```
 
 
 i found /user page with status 200 i think this will help us when i open it it give me a respond in json format Missing token parmater its look like that  is an api anyways i tired put a token value to see its respond it gives me invalid or missed token argument so we have to know how that backend code works if the php code uses == in the condition we can bypass the token 
