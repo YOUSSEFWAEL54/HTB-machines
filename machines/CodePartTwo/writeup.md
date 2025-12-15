@@ -78,7 +78,7 @@ SELECT * FROM user;
 find / -perm 4000  2>/dev/null 
 ```
 
-anyways it didnot result anything so i tiers to see if any app uses sudo 
+anyways it didnot result anything so i tierd to see if any app uses sudo 
 
 ```
 sudo -l
