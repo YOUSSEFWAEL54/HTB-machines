@@ -97,7 +97,7 @@ and boom we are admin now :)
 wget https://github.com/sqlite/sqlite/raw/master/src/sqlite3ext.h
 ```
 
-> that is the library we need to create the dll reverse shell we use it to maket he code like an sql etenshion able to load and then select it from sql query
+> that is the library we need to create the dll reverse shell we use it to maket its code like an sql extenshion able to load and then select it from sql query
 
 
 - i copied that code from  ai 
