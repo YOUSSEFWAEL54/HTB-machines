@@ -22,8 +22,7 @@ it gives me another open port called isakmp
 500/udp open  isakmp
 ```
 
-so after search i found that we can scan the target ip that has this open service and get a hash password of the user ike
-
+so after search i found that we can scan the target ip that has this open service and get a hash password of the user 
 so we can just use this command to output the hash to txt file
 
 ```
