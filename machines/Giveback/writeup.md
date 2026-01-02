@@ -189,7 +189,7 @@ and it asks me for user password and admin password
 
 after many attemps to know what is the admin password i put the mariadb-password and it works
 
-# post explotation to make a new privliged pod (contanier)
+# post explotation to make a new privliged contanier
 
 
 ```
@@ -282,5 +282,6 @@ sudo /opt/debug run test
 and that will run a conatiner with the config.json we inserted
 
 and boom it gives me flag you can also get a inteacive shell by mounting /bin/bash its your choice
+
 
 and boom we owned giveback! :)
