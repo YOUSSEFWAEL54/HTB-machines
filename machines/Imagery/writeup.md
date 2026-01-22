@@ -30,13 +30,36 @@ and yea it gives to us the admin cookie session
 - and we can login as admin !
 
 # LFI -and dumping data
-
 fisrt thing i see in admin page that you can download a log file of a specfic user in this website and i realized that there parmater changed to the name of the log i download it so i tired to replace this log file name with a file in the server like /etc/passwd
 
 - and yead we download it  so this page vulnerable with LFI 
 
 after seeing the /etc/web we realized that there two users in this machine /home/mark and /home/web that has the source code of the website
 
+ok lets now more information about this process lets see for example the environment varibales in this proces 
+
+we can find this varibales at /proc/self/environ
+
+Some of the information gathered from:`env`
+
+- Current Users: `web`
+- Current Environment: Python Virtual Environment at `/home/web/web/env/bin`
+- Home: `/home/web`
+- Shell: `/bin/bash`
+- Service Memory Monitoring (Flask app)`flaskapp.service`
+
+
+as its flask app lets reying to dump common files like app.py and config.py
+
+
+- 1:config.py import db.json so after dumbing it too we get the user testuser credtinols
+
+- 2:app.py imports some another files so lets dumbing it all
+
+
+we can crack the password of the testuser and login as him!
+
+the testuser has a privlage to edit the image so lets see backend to see if there is any vuln leads to rce
 
 # Parmater injection leads to rce
 
