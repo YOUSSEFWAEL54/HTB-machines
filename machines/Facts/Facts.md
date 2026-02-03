@@ -42,7 +42,7 @@ After sending this, my account was upgraded to **Admin**.
 
 While exploring the admin panel, I found another vulnerability ([GHSA-cp65-5m9r-vc2c](https://github.com/owen2345/camaleon-cms/security/advisories/GHSA-cp65-5m9r-vc2c)). The `download_private_file` endpoint is vulnerable to LFI.
 
-I checked `/etc/passwd` to find valid users: `https://facts.htb/admin/media/download_private_file?file=../../../../../../etc/passwd`
+I checked `/etc/passwd` to find valid users: `http://facts.htb/admin/media/download_private_file?file=../../../../../../etc/passwd`
 
 I identified a user named **trivia**.
 
