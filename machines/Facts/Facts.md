@@ -48,7 +48,7 @@ I identified a user named **trivia**.
 
 ### SSH Key Extraction & Cracking
 
-I attempted to dump the private SSH keys for the user `trivia`: `https://facts.htb/admin/media/download_private_file?file=../../../../../../home/trivia/id_ed25519`
+I attempted to dump the private SSH keys for the user `trivia`: `http://facts.htb/admin/media/download_private_file?file=../../../../../../home/trivia/id_ed25519`
 
 I successfully obtained the private key. However, the key was encrypted. I used `ssh2john` to convert it into a crackable format:
 
