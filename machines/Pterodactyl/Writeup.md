@@ -82,7 +82,7 @@ class CVE_2025_49132():
         self.pearpath = pearpath
 
     def __str__(self):
-        return f"[!] host {self.ip} pearpath {self.pearpath}"
+        return f"[!] host {self.host} pearpath {self.pearpath}"
 
     def exploit(self,command):
         """main exploit function
