@@ -19,7 +19,7 @@ gobuster dir -u  http://monitorsfour.htb -w /usr/share/dirb/wordlists/common.txt
 
 and it result it
 
-
+```
 ===============================================================
 Gobuster v3.8
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
@@ -48,7 +48,7 @@ Progress: 4613 / 4613 (100.00%)
 ===============================================================
 Finished
 ===============================================================
-
+```
 
 i found /user page with status 200 i think this will help us when i open it it give me a respond in json format Missing token parmater its look like that  is an api anyways i tired put a token value to see its respond it gives me invalid or missed token argument so we have to know how that backend code works if the php code uses == in the condition we can bypass the token 
 
@@ -60,9 +60,6 @@ we can inject the bypass with the url ?token = bypass code
 
 the apis data
 
-[{"id":2,"username":"admin","email":"admin@monitorsfour.htb","password":"56b32eb43e6f15395f6c46c1c9e1cd36","role":"super user","token":"8024b78f83f102da4f","name":"Marcus Higgins","position":"System Administrator","dob":"1978-04-26","start_date":"2021-01-12","salary":"320800.00"},{"id":5,"username":"mwatson","email":"mwatson@monitorsfour.htb","password":"69196959c16b26ef00b77d82cf6eb169","role":"user","token":"0e543210987654321","name":"Michael Watson","position":"Website Administrator","dob":"1985-02-15","start_date":"2021-05-11","salary":"75000.00"},{"id":6,"username":"janderson","email":"janderson@monitorsfour.htb","password":"2a22dcf99190c322d974c8df5ba3256b","role":"user","token":"0e999999999999999","name":"Jennifer Anderson","position":"Network Engineer","dob":"1990-07-16","start_date":"2021-06-20","salary":"68000.00"},{"id":7,"username":"dthompson","email":"dthompson@monitorsfour.htb","password":"8d4a7e7fd08555133e056d9aacb1e519","role":"user","token":"0e111111111111111","name":"David Thompson","position":"Database Manager","dob":"1982-11-23","start_date":"2022-09-15","salary":"83000.00"}]
-it 
-
 i found user admin is the super user and we found its password with md5 hash format i decrypted it using https://www.dcode.fr/md5-hash you can also use hach cat and use rockyou world list anyways it give me wonderfull
 
 i login into admin now succesufly
@@ -73,9 +70,10 @@ i found nothing in .env so we can  fuz a domin with world list
 
 ffuf -c -u http://monitorsfour.htb/ -H "Host: FUZZ.monitorsfour.htb" -w subdomains-top1mil-20000.txt -fw 3 
 
+```
 cacti                   [Status: 302, Size: 0, Words: 1, Lines: 1, Duration: 712ms]
 :: Progress: [20000/20000] :: Job [1/1] :: 90 req/sec :: Duration: [0:02:30] :: Errors: 0 ::
-
+```
 and we found cacti !
 
 ok we now must add this to host config file to acsses the web 
@@ -101,14 +99,16 @@ we can read the config file /etc/resolv.conf shows a nameserver 127.0.0.11 (Dock
 
 ok we found the genral ip we w can scan it to findany valulnabrits or any thing we dont have python
 so we have touse built in commands we can use
+
+```
 for port in {1..65535}; do timeout 1 bash -c "</dev/tcp/192.168.65.7/$port" && echo "Port $port is open"; done 
+```
 
 when there is a connection with any port it will gives us open 
 
 so after that we found port 2375 open that port is the Docker API Escape that api can be used to create mange conatiners  so this that olny is a valunabrity we can use this api to craete a new high privlged conatainer that can read the windows files and by this we can read the windowss files and get root.txt honstly i see that nano writeup is very help full link
 
 https://medium.com/@nano246812/instant-root-via-unauthenticated-docker-engine-api-tcp-2375-from-low-priv-container-full-root-0cc368bc7aef
-
 
 i follwed his instarctions 
 www-data@821fbd6a43fa:~/html/cacti$ curl http://192.168.65.7:2375/version
