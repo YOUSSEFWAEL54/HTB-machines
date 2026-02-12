@@ -1,4 +1,3 @@
-[[systems-and-security/HTB-machines/Index]]
 # scan ports
 
 i used nmap to find open ports
