@@ -1,7 +1,5 @@
 - in this writeup in sha Allah you will understand every things , Technique and commands we have used. when and why we using it
 
-[[systems-and-security/HTB-machines/Index]]
-
 >first you must see the open services to know where you will be start
 
 # scan ports and services
