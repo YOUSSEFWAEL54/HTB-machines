@@ -286,15 +286,14 @@ it resaults me that
 
 i searched to find any cve's on this apps and i found a cve with netdata and this the app uses docker any ways this is the cve repo i used
 
-https://github.com/AliElKhatteb/CVE-2024-32019-POC
+https://github.com/AliElKhatteb/CVE-2024-32019-POC PATH hijacking
 
 upload the binary file to any writeable path
 
-then make the nvme-list use our binary file we has set to the pass
+then make the nvme-list use our binary file we has set to the path
 
 
-> to explain the nvme-list doesnot read the absloute path of the nvme binary like /usr/lib/... it just use the realtive path beacuse nvme in its folde so we simply make fake binary get the shell with uid 0 (root privale)
-and make it read ours path that has the fake malicious name nvme program so excatly we have rce now and we can get shell with the root privlage
+> to explain the nvme-list doesnot read the absloute path of the nvme binary like /usr/lib/... it just use PATH varibale to find it so we simply make fake binary get the shell with uid 0 (root privale) and set the PATH to our malicous nvme binary
 
 and now we root
 
